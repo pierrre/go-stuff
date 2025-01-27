@@ -1,0 +1,10 @@
+{
+	"entries": [
+		{
+			"deep_equal": {
+				"type": "*math/big.Int",
+				"value": 354224848179261915075
+			}
+		}
+	]
+}
