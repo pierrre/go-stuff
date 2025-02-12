@@ -3,7 +3,6 @@ package main
 import (
 	"errors"
 	"io"
-	"math/big"
 	"testing"
 
 	"github.com/pierrre/assert"
@@ -38,26 +37,20 @@ func (e *errorWriter) Write(p []byte) (n int, err error) {
 	return 0, e.err
 }
 
-var benchRes any
-
 func BenchmarkFibonacci(b *testing.B) {
-	var res *big.Int
-	for range b.N {
-		res = Fibonacci(testIterations)
+	for b.Loop() {
+		Fibonacci(testIterations)
 	}
-	benchRes = res
 }
 
 func BenchmarkFibonacciString(b *testing.B) {
-	var res string
-	for range b.N {
-		res = FibonacciString(testIterations)
+	for b.Loop() {
+		FibonacciString(testIterations)
 	}
-	benchRes = res
 }
 
 func BenchmarkFibonacciWrite(b *testing.B) {
-	for range b.N {
+	for b.Loop() {
 		_ = FibonacciWrite(io.Discard, testIterations)
 	}
 }

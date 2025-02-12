@@ -16,20 +16,14 @@ func TestFibonacciString(t *testing.T) {
 	assertauto.Equal(t, s)
 }
 
-var benchRes any
-
 func BenchmarkFibonacci(b *testing.B) {
-	var res int64
-	for range b.N {
-		res = Fibonacci(50)
+	for b.Loop() {
+		Fibonacci(50)
 	}
-	benchRes = res
 }
 
 func BenchmarkFibonacciString(b *testing.B) {
-	var res string
-	for range b.N {
-		res = FibonacciString(50)
+	for b.Loop() {
+		FibonacciString(50)
 	}
-	benchRes = res
 }
