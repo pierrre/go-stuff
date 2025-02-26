@@ -13,7 +13,7 @@ const testIterations = 100
 
 func TestFibonacci(t *testing.T) {
 	v := Fibonacci(testIterations)
-	assertauto.DeepEqual(t, v)
+	assertauto.Equal(t, v)
 }
 
 func TestFibonacciString(t *testing.T) {
