@@ -1,2 +1,2 @@
-[*big.Int] => .Bytes() => (len=9)
+[*math/big.Int] => .Bytes() => (len=9)
 	00000000  13 33 db 76 a7 c5 94 bf  c3                       |.3.v.....|
