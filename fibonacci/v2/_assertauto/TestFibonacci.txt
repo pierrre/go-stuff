@@ -1,2 +1,1 @@
-[*math/big.Int] => .Bytes() => (len=9)
-	00000000  13 33 db 76 a7 c5 94 bf  c3                       |.3.v.....|
+[*math/big.Int] => .String() => (len=21) "354224848179261915075"
