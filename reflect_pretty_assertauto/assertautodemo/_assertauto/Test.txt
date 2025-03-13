@@ -1,0 +1,8 @@
+[*github.com/pierrre/go-stuff/reflect_pretty_assertauto/assertautodemo.myStruct] => {
+	Int: [int] 123,
+	Float64: [float64] 123.456,
+	String: [string] (len=4) "test",
+	Map: [map[string]interface {}] (len=1) {
+		"foo": [string] (len=3) "bar",
+	},
+}
