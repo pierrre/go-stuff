@@ -7,11 +7,11 @@ import (
 )
 
 func main() {
-	s := FibonacciString(100)
+	s := fibonacciString(100)
 	fmt.Println(s)
 }
 
-func Fibonacci(n int) *big.Int {
+func fibonacci(n int) *big.Int {
 	a, b := big.NewInt(0), big.NewInt(1)
 	for range n {
 		a.Add(a, b)
@@ -20,10 +20,10 @@ func Fibonacci(n int) *big.Int {
 	return a
 }
 
-func FibonacciString(n int) string {
+func fibonacciString(n int) string {
 	s := ""
 	for i := range n {
-		v := Fibonacci(i)
+		v := fibonacci(i)
 		vs := v.String()
 		s += vs + "\n"
 	}

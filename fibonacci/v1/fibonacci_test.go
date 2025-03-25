@@ -7,23 +7,23 @@ import (
 )
 
 func TestFibonacci(t *testing.T) {
-	v := Fibonacci(50)
+	v := fibonacci(50)
 	assertauto.Equal(t, v)
 }
 
 func TestFibonacciString(t *testing.T) {
-	s := FibonacciString(50)
+	s := fibonacciString(50)
 	assertauto.Equal(t, s)
 }
 
 func BenchmarkFibonacci(b *testing.B) {
 	for b.Loop() {
-		Fibonacci(50)
+		fibonacci(50)
 	}
 }
 
 func BenchmarkFibonacciString(b *testing.B) {
 	for b.Loop() {
-		FibonacciString(50)
+		fibonacciString(50)
 	}
 }

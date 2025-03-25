@@ -12,12 +12,12 @@ import (
 const testIterations = 100
 
 func TestFibonacci(t *testing.T) {
-	v := Fibonacci(testIterations)
+	v := fibonacci(testIterations)
 	assertauto.Equal(t, v)
 }
 
 func TestFibonacciString(t *testing.T) {
-	s := FibonacciString(testIterations)
+	s := fibonacciString(testIterations)
 	assertauto.Equal(t, s)
 }
 
@@ -25,7 +25,7 @@ func TestFibonacciWriteError(t *testing.T) {
 	w := &errorWriter{
 		err: errors.New("error"),
 	}
-	err := FibonacciWrite(w, testIterations)
+	err := fibonacciWrite(w, testIterations)
 	assert.Error(t, err)
 }
 
@@ -39,18 +39,18 @@ func (e *errorWriter) Write(p []byte) (n int, err error) {
 
 func BenchmarkFibonacci(b *testing.B) {
 	for b.Loop() {
-		_ = Fibonacci(testIterations)
+		_ = fibonacci(testIterations)
 	}
 }
 
 func BenchmarkFibonacciString(b *testing.B) {
 	for b.Loop() {
-		FibonacciString(testIterations)
+		fibonacciString(testIterations)
 	}
 }
 
 func BenchmarkFibonacciWrite(b *testing.B) {
 	for b.Loop() {
-		_ = FibonacciWrite(io.Discard, testIterations)
+		_ = fibonacciWrite(io.Discard, testIterations)
 	}
 }

@@ -8,14 +8,14 @@ import (
 )
 
 func main() {
-	s := FibonacciString(1000)
+	s := fibonacciString(1000)
 	fmt.Println(s)
 }
 
-func Fibonacci(n int) *big.Int {
+func fibonacci(n int) *big.Int {
 	var i int
 	var v *big.Int
-	for i, v = range FibonacciSeq() {
+	for i, v = range fibonacciSeq() {
 		if i >= n {
 			break
 		}
@@ -23,9 +23,9 @@ func Fibonacci(n int) *big.Int {
 	return v
 }
 
-func FibonacciString(n int) string {
+func fibonacciString(n int) string {
 	s := ""
-	for i, v := range FibonacciSeq() {
+	for i, v := range fibonacciSeq() {
 		if i >= n {
 			break
 		}
@@ -35,7 +35,7 @@ func FibonacciString(n int) string {
 	return s
 }
 
-func FibonacciSeq() iter.Seq2[int, *big.Int] {
+func fibonacciSeq() iter.Seq2[int, *big.Int] {
 	return func(yield func(int, *big.Int) bool) {
 		a, b := big.NewInt(0), big.NewInt(1)
 		for i := 0; ; i++ {

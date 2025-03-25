@@ -9,23 +9,23 @@ import (
 const testIterations = 100
 
 func TestFibonacci(t *testing.T) {
-	v := Fibonacci(testIterations)
+	v := fibonacci(testIterations)
 	assertauto.Equal(t, v)
 }
 
 func TestFibonacciString(t *testing.T) {
-	s := FibonacciString(testIterations)
+	s := fibonacciString(testIterations)
 	assertauto.Equal(t, s)
 }
 
 func BenchmarkFibonacci(b *testing.B) {
 	for b.Loop() {
-		Fibonacci(testIterations)
+		fibonacci(testIterations)
 	}
 }
 
 func BenchmarkFibonacciString(b *testing.B) {
 	for b.Loop() {
-		FibonacciString(testIterations)
+		fibonacciString(testIterations)
 	}
 }
