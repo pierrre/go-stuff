@@ -1,3 +1,4 @@
+//nolint:gocritic // Uncomment to show the bug.
 package main
 
 import (
@@ -21,5 +22,5 @@ func Test(t *testing.T) {
 	}
 	require.Equal(t, a, b)
 	_ = proto.CloneOf(b)
-	//require.Equal(t, a, b)
+	// require.Equal(t, a, b)
 }
