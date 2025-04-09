@@ -8,7 +8,7 @@ require (
 	github.com/pierrre/assert v0.8.0
 	github.com/pierrre/errors v0.10.1
 	github.com/pierrre/go-libs v0.11.1
-	github.com/pierrre/pretty v0.11.8
+	github.com/pierrre/pretty v0.11.9
 	github.com/stretchr/testify v1.10.0
 	google.golang.org/genproto v0.0.0-20250407143221-ac9807e6c755
 	google.golang.org/protobuf v1.36.6
