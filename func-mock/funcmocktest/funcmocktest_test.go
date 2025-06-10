@@ -3,7 +3,6 @@ package funcmocktest
 import (
 	"testing"
 
-	"github.com/pierrre/assert"
 	"github.com/pierrre/assert/asserttest"
 )
 
@@ -22,7 +21,7 @@ func TestMockListFailTooManyCalls(t *testing.T) {
 	f := MockList(t, []func(){
 		func() {},
 		func() {},
-	}, assert.Report(asserttest.NewReportAuto(t)))
+	}, asserttest.ReportAuto(t))
 	f()
 	f()
 	f()
@@ -33,7 +32,7 @@ func TestMockListFailRemaningCalls(t *testing.T) {
 		func() {},
 		func() {},
 		func() {},
-	}, assert.Report(asserttest.NewReportAuto(t)))
+	}, asserttest.ReportAuto(t))
 	f()
 	f()
 }
@@ -46,7 +45,7 @@ func TestMockCount(t *testing.T) {
 }
 
 func TestMockCountFail(t *testing.T) {
-	f := MockCount(t, func() {}, 2, assert.Report(asserttest.NewReportAuto(t)))
+	f := MockCount(t, func() {}, 2, asserttest.ReportAuto(t))
 	f()
 	f()
 	f()
