@@ -122,7 +122,7 @@ func TestMockSerial(t *testing.T) {
 	})
 	workers := 8
 	callsPerWorker := 100
-	goroutine.RunN(ctx, workers, func(ctx context.Context) {
+	goroutine.RunN(ctx, workers, func(ctx context.Context, _ int) {
 		for range callsPerWorker {
 			f()
 		}
