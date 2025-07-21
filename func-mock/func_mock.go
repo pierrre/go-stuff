@@ -64,7 +64,7 @@ func MockSerial[F Func](f F) F {
 func MakeFunc[F Func](fn func(args []reflect.Value) []reflect.Value) F {
 	typ := checkType[F]()
 	v := reflect.MakeFunc(typ, fn)
-	f := v.Interface().(F) //nolint:forcetypeassert // We know the type.
+	f, _ := v.Interface().(F)
 	return f
 }
 
