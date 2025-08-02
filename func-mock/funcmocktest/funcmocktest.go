@@ -17,7 +17,7 @@ func MockList[FS ~[]F, F funcmock.Func](tb testing.TB, fs FS, opts ...assert.Opt
 	tb.Helper()
 	onTooManyCalls := funcmock.MakeFunc[F](func(args []reflect.Value) []reflect.Value {
 		tb.Helper()
-		assert.Fail(tb, "funcmocktest.MockList", fmt.Sprintf("too many calls: max %d", len(fs)), opts...)
+		assert.Fail(tb, "funcmocktest.MockList", fmt.Sprintf("too many calls: max %d", len(fs)), 1, opts...)
 		return funcmock.MakeFuncResults[F]()
 	})
 	f := funcmock.MockList(fs, onTooManyCalls)
@@ -26,7 +26,7 @@ func MockList[FS ~[]F, F funcmock.Func](tb testing.TB, fs FS, opts ...assert.Opt
 		tb.Helper()
 		count := getCount()
 		if count < int64(len(fs)) {
-			assert.Fail(tb, "funcmocktest.MockList", fmt.Sprintf("remaining calls: got %d, want %d", count, len(fs)), opts...)
+			assert.Fail(tb, "funcmocktest.MockList", fmt.Sprintf("remaining calls: got %d, want %d", count, len(fs)), 1, opts...)
 		}
 	})
 	return f
@@ -41,7 +41,7 @@ func MockCount[F funcmock.Func](tb testing.TB, f F, expected int64, opts ...asse
 		tb.Helper()
 		count := getCount()
 		if count != expected {
-			assert.Fail(tb, "funcmocktest.MockCount", fmt.Sprintf("unexpected calls: got %d, want %d", count, expected), opts...)
+			assert.Fail(tb, "funcmocktest.MockCount", fmt.Sprintf("unexpected calls: got %d, want %d", count, expected), 1, opts...)
 		}
 	})
 	return f

@@ -3,8 +3,13 @@ package funcmocktest
 import (
 	"testing"
 
+	"github.com/pierrre/assert"
 	"github.com/pierrre/assert/asserttest"
 )
+
+func init() {
+	assert.DefaultShowStack = false
+}
 
 func TestMockList(t *testing.T) {
 	f := MockList(t, []func(){
