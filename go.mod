@@ -6,7 +6,7 @@ toolchain go1.24.1
 
 require (
 	github.com/pierrre/assert v0.10.1
-	github.com/pierrre/errors v0.11.0
+	github.com/pierrre/errors v0.12.0
 	github.com/pierrre/go-libs v0.22.0
 	github.com/pierrre/pretty v0.18.9
 	github.com/stretchr/testify v1.10.0
