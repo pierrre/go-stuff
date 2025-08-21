@@ -11,7 +11,7 @@ require (
 	github.com/pierrre/pretty v0.20.6
 	github.com/stretchr/testify v1.10.0
 	google.golang.org/genproto v0.0.0-20250407143221-ac9807e6c755
-	google.golang.org/protobuf v1.36.7
+	google.golang.org/protobuf v1.36.8
 )
 
 require (
