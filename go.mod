@@ -9,7 +9,7 @@ require (
 	github.com/pierrre/errors v0.13.0
 	github.com/pierrre/go-libs v0.22.1
 	github.com/pierrre/pretty v0.20.6
-	github.com/stretchr/testify v1.10.0
+	github.com/stretchr/testify v1.11.0
 	google.golang.org/genproto v0.0.0-20250407143221-ac9807e6c755
 	google.golang.org/protobuf v1.36.8
 )
