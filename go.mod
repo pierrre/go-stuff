@@ -9,7 +9,7 @@ require (
 	github.com/pierrre/pretty v0.21.0
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/genproto v0.0.0-20250407143221-ac9807e6c755
-	google.golang.org/protobuf v1.36.9
+	google.golang.org/protobuf v1.36.10
 )
 
 require (
