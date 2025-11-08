@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -21,9 +22,11 @@ func fibonacci(n int) int64 {
 
 func fibonacciString(n int) string {
 	s := ""
+	sb := new(strings.Builder)
 	for i := range n {
 		v := fibonacci(i)
-		s += strconv.FormatInt(v, 10) + "\n"
+		sb.WriteString(strconv.FormatInt(v, 10) + "\n")
 	}
+	s += sb.String()
 	return s
 }

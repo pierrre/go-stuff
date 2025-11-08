@@ -4,6 +4,7 @@ package main
 import (
 	"fmt"
 	"math/big"
+	"strings"
 )
 
 func main() {
@@ -22,10 +23,12 @@ func fibonacci(n int) *big.Int {
 
 func fibonacciString(n int) string {
 	s := ""
+	sb := new(strings.Builder)
 	for i := range n {
 		v := fibonacci(i)
 		vs := v.String()
-		s += vs + "\n"
+		sb.WriteString(vs + "\n")
 	}
+	s += sb.String()
 	return s
 }
