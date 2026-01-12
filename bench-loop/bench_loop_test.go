@@ -21,9 +21,9 @@ func BenchmarkNew(b *testing.B) {
 
 func BenchmarkOld(b *testing.B) {
 	it := slices.Values(s)
-	b.ResetTimer()
+
 	var res int
-	for range b.N {
+	for b.Loop() {
 		for v := range it {
 			res = v
 		}

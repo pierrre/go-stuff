@@ -23,7 +23,7 @@ func main() {
 		t := rv.Type()
 		k := t.Kind()
 		var s string
-		switch k { //nolint:exhaustive // We don't support everything.
+		switch k {
 		case reflect.Int:
 			s = strconv.FormatInt(rv.Int(), 10)
 		case reflect.Float64:
