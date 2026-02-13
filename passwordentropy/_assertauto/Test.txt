@@ -1,0 +1,51 @@
+[string] (len=0) ""
+	========== assertauto ==========
+[float64] 0
+	========== assertauto ==========
+[string] (len=3) "abc"
+	========== assertauto ==========
+[float64] 7.754887502163468
+	========== assertauto ==========
+[string] (len=3) "ABC"
+	========== assertauto ==========
+[float64] 7.754887502163468
+	========== assertauto ==========
+[string] (len=3) "Abc"
+	========== assertauto ==========
+[float64] 10.754887502163468
+	========== assertauto ==========
+[string] (len=6) "a1b2c3"
+	========== assertauto ==========
+[float64] 24
+	========== assertauto ==========
+[string] (len=6) "A1B2C3"
+	========== assertauto ==========
+[float64] 24
+	========== assertauto ==========
+[string] (len=6) "123456"
+	========== assertauto ==========
+[float64] 19.931568569324174
+	========== assertauto ==========
+[string] (len=8) "password"
+	========== assertauto ==========
+[float64] 37.603517745128734
+	========== assertauto ==========
+[string] (len=8) "Password"
+	========== assertauto ==========
+[float64] 45.603517745128734
+	========== assertauto ==========
+[string] (len=9) "Password1"
+	========== assertauto ==========
+[float64] 53.587766793481876
+	========== assertauto ==========
+[string] (len=10) "Password1!"
+	========== assertauto ==========
+[float64] 59.77279923499917
+	========== assertauto ==========
+[string] (len=8) ",?;.:/!&"
+	========== assertauto ==========
+[float64] 24
+	========== assertauto ==========
+[string] (len=26) "3TIFXL2JL3QVDWC6JBB2YO6GWI"
+	========== assertauto ==========
+[float64] 134.4180500375001
