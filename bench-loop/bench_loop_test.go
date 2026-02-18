@@ -23,7 +23,7 @@ func BenchmarkOld(b *testing.B) {
 	it := slices.Values(s)
 	b.ResetTimer()
 	var res int
-	for range b.N { //nolint:modernize // This code benchmarks the old syntax.
+	for range b.N {
 		for v := range it {
 			res = v
 		}
