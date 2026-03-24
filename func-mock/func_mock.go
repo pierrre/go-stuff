@@ -14,10 +14,10 @@ type Func any
 // MockList creates a mock function that calls the functions in the list in order.
 // If the list is exhausted, it calls onTooManyCalls if it's not nil, otherwise it panics.
 func MockList[FS ~[]F, F Func](fs FS, onTooManyCalls F) F {
-	var count int64
+	var count atomic.Int64
 	rOnTooManyCalls := reflect.ValueOf(onTooManyCalls)
 	return MakeFunc[F](func(args []reflect.Value) []reflect.Value {
-		c := atomic.AddInt64(&count, 1)
+		c := count.Add(1)
 		var v reflect.Value
 		switch {
 		case c <= int64(len(fs)):
@@ -36,14 +36,14 @@ func MockList[FS ~[]F, F Func](fs FS, onTooManyCalls F) F {
 // It returns the mock function and a function to get the count.
 // The count is incremented after each call to the mocked function returns.
 func MockCount[F Func](f F) (_ F, getCount func() int64) {
-	var count int64
+	var count atomic.Int64
 	v := reflect.ValueOf(f)
 	f = MakeFunc[F](func(args []reflect.Value) []reflect.Value {
-		defer atomic.AddInt64(&count, 1)
+		defer count.Add(1)
 		return call(v, args)
 	})
 	getCount = func() int64 {
-		return atomic.LoadInt64(&count)
+		return count.Load()
 	}
 	return f, getCount
 }
