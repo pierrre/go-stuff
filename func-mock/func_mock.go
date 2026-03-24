@@ -42,9 +42,7 @@ func MockCount[F Func](f F) (_ F, getCount func() int64) {
 		defer count.Add(1)
 		return call(v, args)
 	})
-	getCount = func() int64 {
-		return count.Load()
-	}
+	getCount = count.Load
 	return f, getCount
 }
 
