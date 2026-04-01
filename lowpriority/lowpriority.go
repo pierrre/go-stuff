@@ -4,9 +4,11 @@ package lowpriority
 import (
 	"context"
 	"runtime"
-	"syscall"
+	"sync"
 
+	"github.com/pierrre/go-libs/funcutil"
 	"github.com/pierrre/go-libs/goroutine"
+	"golang.org/x/sys/unix"
 )
 
 // Run runs the given function with a low priority thread.
@@ -19,11 +21,77 @@ import (
 func Run(ctx context.Context, f func(ctx context.Context)) {
 	goroutine.Start(ctx, func(ctx context.Context) {
 		runtime.LockOSThread()
-		tid := syscall.Gettid()
-		err := syscall.Setpriority(syscall.PRIO_PROCESS, tid, 19)
+		tid := unix.Gettid()
+		err := unix.Setpriority(unix.PRIO_PROCESS, tid, 19)
 		if err != nil {
 			panic(err)
 		}
 		f(ctx)
 	}).Wait()
+}
+
+// Pool creates a pool of workers that runs functions with low priority.
+func Pool(ctx context.Context, workers int) (run func(ctx context.Context, f func(ctx context.Context)) error, stop func()) {
+	type result struct {
+		goexit   bool
+		panicErr error
+	}
+	type task struct {
+		ctx   context.Context //nolint:containedctx // The context is used to run functions.
+		f     func(ctx context.Context)
+		resCh chan<- result
+	}
+	taskCh := make(chan task)
+	waiter := goroutine.StartN(ctx, workers, func(ctx context.Context, i int) {
+		Run(ctx, func(ctx context.Context) {
+			for t := range taskCh {
+				func() {
+					var res result
+					defer func() {
+						t.resCh <- res
+					}()
+					funcutil.Call(
+						func() {
+							t.f(t.ctx)
+						},
+						func(goexit bool, panicErr error) {
+							res.goexit = goexit
+							res.panicErr = panicErr
+						},
+					)
+				}()
+			}
+		})
+	})
+	run = func(ctx context.Context, f func(ctx context.Context)) error {
+		resCh := make(chan result, 1)
+		t := task{
+			ctx:   ctx,
+			f:     f,
+			resCh: resCh,
+		}
+		select {
+		case taskCh <- t:
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+		var res result
+		select {
+		case res = <-resCh:
+		case <-ctx.Done():
+			return ctx.Err()
+		}
+		if res.goexit {
+			runtime.Goexit()
+		}
+		if res.panicErr != nil {
+			panic(res.panicErr)
+		}
+		return nil
+	}
+	stop = sync.OnceFunc(func() {
+		close(taskCh)
+		waiter.Wait()
+	})
+	return run, stop
 }
