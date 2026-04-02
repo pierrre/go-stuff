@@ -5,7 +5,7 @@ go 1.26.0
 require (
 	github.com/pierrre/assert v0.12.1
 	github.com/pierrre/errors v0.15.0
-	github.com/pierrre/go-libs v0.26.1
+	github.com/pierrre/go-libs v0.27.0
 	github.com/pierrre/pretty v0.23.0
 	github.com/stretchr/testify v1.11.1
 	google.golang.org/genproto v0.0.0-20250407143221-ac9807e6c755
