@@ -8,7 +8,6 @@ import (
 
 	"github.com/pierrre/go-libs/funcutil"
 	"github.com/pierrre/go-libs/goroutine"
-	"golang.org/x/sys/unix"
 )
 
 // Run runs the given function with a low priority thread.
@@ -21,8 +20,7 @@ import (
 func Run(ctx context.Context, f func(ctx context.Context)) {
 	goroutine.Start(ctx, func(ctx context.Context) {
 		runtime.LockOSThread()
-		tid := unix.Gettid()
-		err := unix.Setpriority(unix.PRIO_PROCESS, tid, 19)
+		err := setThreadLowPriority()
 		if err != nil {
 			panic(err)
 		}
