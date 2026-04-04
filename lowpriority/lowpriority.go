@@ -71,13 +71,13 @@ func Pool(ctx context.Context, workers int) (run func(ctx context.Context, f fun
 		select {
 		case taskCh <- t:
 		case <-ctx.Done():
-			return ctx.Err()
+			return context.Cause(ctx)
 		}
 		var res result
 		select {
 		case res = <-resCh:
 		case <-ctx.Done():
-			return ctx.Err()
+			return context.Cause(ctx)
 		}
 		if res.goexit {
 			runtime.Goexit()
