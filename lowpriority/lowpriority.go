@@ -19,7 +19,7 @@ import (
 // [Run] waits for the function to finish, and returns any panic that may have occurred in the function.
 func Run(ctx context.Context, f func(ctx context.Context)) {
 	goroutine.Start(ctx, func(ctx context.Context) {
-		setLowPriority()
+		lockThreadLowPriority()
 		f(ctx)
 	}).Wait()
 }
@@ -37,7 +37,7 @@ func Pool(ctx context.Context, workers int) (run func(ctx context.Context, f fun
 	}
 	taskCh := make(chan task)
 	waiter := goroutine.StartN(ctx, workers, func(ctx context.Context, i int) {
-		setLowPriority()
+		lockThreadLowPriority()
 		for t := range taskCh {
 			func() {
 				var res result
@@ -89,7 +89,7 @@ func Pool(ctx context.Context, workers int) (run func(ctx context.Context, f fun
 	return run, stop
 }
 
-func setLowPriority() {
+func lockThreadLowPriority() {
 	runtime.LockOSThread()
 	err := setThreadLowPriority()
 	if err != nil {
