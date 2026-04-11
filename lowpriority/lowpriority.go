@@ -19,11 +19,7 @@ import (
 // [Run] waits for the function to finish, and returns any panic that may have occurred in the function.
 func Run(ctx context.Context, f func(ctx context.Context)) {
 	goroutine.Start(ctx, func(ctx context.Context) {
-		runtime.LockOSThread()
-		err := setThreadLowPriority()
-		if err != nil {
-			panic(err)
-		}
+		setLowPriority()
 		f(ctx)
 	}).Wait()
 }
@@ -41,25 +37,24 @@ func Pool(ctx context.Context, workers int) (run func(ctx context.Context, f fun
 	}
 	taskCh := make(chan task)
 	waiter := goroutine.StartN(ctx, workers, func(ctx context.Context, i int) {
-		Run(ctx, func(ctx context.Context) {
-			for t := range taskCh {
-				func() {
-					var res result
-					defer func() {
-						t.resCh <- res
-					}()
-					funcutil.Call(
-						func() {
-							t.f(t.ctx)
-						},
-						func(goexit bool, panicErr error) {
-							res.goexit = goexit
-							res.panicErr = panicErr
-						},
-					)
+		setLowPriority()
+		for t := range taskCh {
+			func() {
+				var res result
+				defer func() {
+					t.resCh <- res
 				}()
-			}
-		})
+				funcutil.Call(
+					func() {
+						t.f(t.ctx)
+					},
+					func(goexit bool, panicErr error) {
+						res.goexit = goexit
+						res.panicErr = panicErr
+					},
+				)
+			}()
+		}
 	})
 	run = func(ctx context.Context, f func(ctx context.Context)) error {
 		resCh := make(chan result, 1)
@@ -92,4 +87,12 @@ func Pool(ctx context.Context, workers int) (run func(ctx context.Context, f fun
 		waiter.Wait()
 	})
 	return run, stop
+}
+
+func setLowPriority() {
+	runtime.LockOSThread()
+	err := setThreadLowPriority()
+	if err != nil {
+		panic(err)
+	}
 }
