@@ -8,7 +8,7 @@ import (
 	"os"
 
 	"github.com/pierrre/errors"
-	"github.com/pierrre/go-libs/bufpool"
+	"github.com/pierrre/go-libs/bytesutil"
 )
 
 func main() {
@@ -30,13 +30,13 @@ func fibonacci(n int) *big.Int {
 }
 
 func fibonacciString(n int) string {
-	buf := bufPool.Get()
-	defer bufPool.Put(buf)
+	buf := bytesWriterPool.Get()
+	defer bytesWriterPool.Put(buf)
 	_ = fibonacciWrite(buf, n) // Ignore error because it's a bytes.Buffer.
 	return buf.String()
 }
 
-var bufPool = &bufpool.Pool{}
+var bytesWriterPool = &bytesutil.WriterPool{}
 
 func fibonacciSeq() iter.Seq2[int, *big.Int] {
 	return func(yield func(int, *big.Int) bool) {
