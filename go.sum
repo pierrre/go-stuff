@@ -10,8 +10,8 @@ github.com/pierrre/errors v0.15.4 h1:09s54ZNARCGApnY6NajjnksThJE0dBWeQY1YchyCF0A
 github.com/pierrre/errors v0.15.4/go.mod h1:/NgCpkB10mKu/CotkBTlt+RWhJ6kTEcQttx9cJFDdLE=
 github.com/pierrre/go-libs v0.30.15 h1:R/7maejDGo94O0c81WU/kO81/l30OOVsM+WGR11sC0Q=
 github.com/pierrre/go-libs v0.30.15/go.mod h1:ea9cuN5x6dkMtBwe8t6njNXQW0zhfS+1VM/fpruNcOc=
-github.com/pierrre/pretty v0.24.0 h1:45TlcoEPGI0bvYArLk7lBz3sDH8Uodor2ILuOKjIATo=
-github.com/pierrre/pretty v0.24.0/go.mod h1:vxnGO5xC9Y69y45gsMqU41dQ1YNJc3Q+a6foxvRXh4w=
+github.com/pierrre/pretty v0.24.1 h1:hKfqCbX27S/zkesB8YoSa8rSBs7DWrwWZjTFFjocIH4=
+github.com/pierrre/pretty v0.24.1/go.mod h1:WbA12yKbUkccBWOW7ZJydgHKYlRqGGFpjSNm84dTLX0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
