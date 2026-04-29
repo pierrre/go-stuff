@@ -8,8 +8,8 @@ github.com/pierrre/compare v1.4.15 h1:ZYzDSe6D07cj54erJHXXBE2Ot9GPM5VnTOhVrvXe74
 github.com/pierrre/compare v1.4.15/go.mod h1:WHIREzz9xDNMzyIIp+RyZULubskCL/Vj6nnrd5Xwml8=
 github.com/pierrre/errors v0.15.4 h1:09s54ZNARCGApnY6NajjnksThJE0dBWeQY1YchyCF0A=
 github.com/pierrre/errors v0.15.4/go.mod h1:/NgCpkB10mKu/CotkBTlt+RWhJ6kTEcQttx9cJFDdLE=
-github.com/pierrre/go-libs v0.30.13 h1:dh7zcJbm+exdeghQf4eFyK10+u5grMr+0OvhcxWzEQA=
-github.com/pierrre/go-libs v0.30.13/go.mod h1:ea9cuN5x6dkMtBwe8t6njNXQW0zhfS+1VM/fpruNcOc=
+github.com/pierrre/go-libs v0.30.15 h1:R/7maejDGo94O0c81WU/kO81/l30OOVsM+WGR11sC0Q=
+github.com/pierrre/go-libs v0.30.15/go.mod h1:ea9cuN5x6dkMtBwe8t6njNXQW0zhfS+1VM/fpruNcOc=
 github.com/pierrre/pretty v0.24.0 h1:45TlcoEPGI0bvYArLk7lBz3sDH8Uodor2ILuOKjIATo=
 github.com/pierrre/pretty v0.24.0/go.mod h1:vxnGO5xC9Y69y45gsMqU41dQ1YNJc3Q+a6foxvRXh4w=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
