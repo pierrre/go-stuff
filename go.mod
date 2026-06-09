@@ -8,7 +8,7 @@ require (
 	github.com/pierrre/go-libs v0.31.8
 	github.com/pierrre/pretty v0.24.3
 	github.com/stretchr/testify v1.11.1
-	golang.org/x/sys v0.45.0
+	golang.org/x/sys v0.46.0
 	google.golang.org/genproto v0.0.0-20250407143221-ac9807e6c755
 	google.golang.org/protobuf v1.36.11
 )
