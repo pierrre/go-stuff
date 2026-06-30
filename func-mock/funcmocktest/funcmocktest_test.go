@@ -32,7 +32,7 @@ func TestMockListFailTooManyCalls(t *testing.T) {
 	f()
 }
 
-func TestMockListFailRemaningCalls(t *testing.T) {
+func TestMockListFailRemainingCalls(t *testing.T) {
 	f := MockList(t, []func(){
 		func() {},
 		func() {},
