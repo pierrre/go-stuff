@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-	assert.DefaultShowStack = false
+	assert.DefaultShowStack.Store(false)
 }
 
 func TestMockList(t *testing.T) {
