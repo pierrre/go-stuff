@@ -91,7 +91,6 @@ func checkType[F Func]() reflect.Type {
 func call(v reflect.Value, args []reflect.Value) []reflect.Value {
 	if v.Type().IsVariadic() {
 		return v.CallSlice(args)
-	} else {
-		return v.Call(args)
 	}
+	return v.Call(args)
 }
