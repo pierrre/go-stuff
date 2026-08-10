@@ -25,7 +25,6 @@ func fibonacci(n int) *big.Int {
 }
 
 func fibonacciString(n int) string {
-	s := ""
 	sb := new(strings.Builder)
 	for i, v := range fibonacciSeq() {
 		if i >= n {
@@ -34,8 +33,7 @@ func fibonacciString(n int) string {
 		vs := v.String()
 		sb.WriteString(vs + "\n")
 	}
-	s += sb.String()
-	return s
+	return sb.String()
 }
 
 func fibonacciSeq() iter.Seq2[int, *big.Int] {
