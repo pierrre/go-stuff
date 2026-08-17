@@ -6,7 +6,7 @@ require (
 	github.com/pierrre/assert v0.15.5
 	github.com/pierrre/errors v0.17.2
 	github.com/pierrre/go-libs v0.34.7
-	github.com/pierrre/pretty v0.26.4
+	github.com/pierrre/pretty v0.26.6
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/sys v0.47.0
 	google.golang.org/genproto v0.0.0-20260810153831-ec0a7760b754
