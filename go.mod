@@ -15,7 +15,7 @@ require (
 )
 
 require (
-	github.com/pierrre/compare v1.5.1 // indirect
+	github.com/pierrre/compare v1.6.2 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/mod v0.40.0 // indirect
 	golang.org/x/sync v0.22.0 // indirect
